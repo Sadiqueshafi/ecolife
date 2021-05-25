@@ -1,0 +1,280 @@
+<app-menu-section></app-menu-section>
+<!-- account area start -->
+<div class="checkout-area mtb-60px">
+  <div class="container">
+    <div class="row">
+      <div class="ml-auto mr-auto col-lg-9">
+        <div class="checkout-wrapper">
+          <div id="faq" class="panel-group">
+            <div class="panel panel-default single-my-account">
+              <div class="panel-heading my-account-title">
+                <h3 class="panel-title"><span>1 .</span> <a data-toggle="collapse" data-parent="#faq"
+                    href="#my-account-1">Edit your account information </a></h3>
+              </div>
+              <div id="my-account-1" class="panel-collapse collapse show">
+                <div class="panel-body">
+                  <div class="myaccount-info-wrapper">
+                    <div class="account-info-wrapper">
+                      <h4>My Account Information</h4>
+                      <h5>Your Personal Details</h5>
+                    </div>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                      <div class="row">
+                        <div class="panel-body">
+                          <div class="myaccount-info-wrapper">
+
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6">
+                                <div class="billing-info">
+                                  <label>First Name</label>
+                                  <input type="text" formControlName="customerFirstName">
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="billing-info">
+                                  <label>Last Name</label>
+                                  <input type="text" formControlName="customerLastName" />
+                                </div>
+                              </div>
+                              <div class="col-lg-12 col-md-12">
+                                <div class="billing-info">
+                                  <label>Email Address</label>
+                                  <input type="email" formControlName="customerEmail" />
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="billing-info">
+                                  <label>Mobile No</label>
+                                  <input type="text" formControlName="customerMobileNo" />
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="billing-info">
+                                  <label>customerAlternateEmail</label>
+                                  <input type="email" formControlName="customerAlternateEmail" />
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="billing-info">
+                                  <label>customerAlternateMobileNo</label>
+                                  <input type="text" formControlName="customerAlternateMobileNo" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="billing-back-btn">
+                              <div class="billing-back">
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="billing-back-btn">
+                        <div class="billing-back">
+                          <a href="#"><i class="fa fa-arrow-up"></i> back</a>
+                        </div>
+                        <div class="billing-btn">
+                          <button type="submit">Continue</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default single-my-account">
+              <div class="panel-heading my-account-title">
+                <h3 class="panel-title"><span>2 .</span> <a data-toggle="collapse" data-parent="#faq"
+                    href="#my-account-2">Change your password </a></h3>
+              </div>
+              <div id="my-account-2" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="myaccount-info-wrapper">
+                    <div class="account-info-wrapper">
+                      <h4>Change Password</h4>
+                      <h5>Your Password</h5>
+                    </div>
+
+                    <form class="changePassword" [formGroup]="changePassword">
+                      <div class="container padding-bottom-3x mb-2 mt-5">
+                        <div class="row justify-content-center">
+                          <div class="col-lg-8 col-md-10">
+
+                            <div class="form-group">
+                              <label class="sr-only">Customer Email</label>
+                              <input formControlName="customerEmail" id="customerEmail" type="email"
+                                placeholder="Customer Email" class="form-control" />
+                              <div class="alert alert-danger" *ngIf="customerEmail.touched && customerEmail.invalid">
+                                <div *ngIf="customerEmail.errors.required">Email is required</div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only">Old Password</label>
+                              <input formControlName="password" id="password" type="password" [(ngModel)]="password"
+                                placeholder="Old Password" class="form-control" />
+                              <div class="alert alert-danger" *ngIf="oldPwd.touched && oldPwd.invalid">
+                                <div *ngIf="oldPwd.errors.required">Old Password is required.</div>
+                                <div *ngIf="oldPwd.errors.shouldBe1234">Old Password is not valid.</div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="sr-only">New Password</label>
+                              <input type="password" formControlName="newPassword" id="newPassword" type="newPassword"
+                                [(ngModel)]="newPassword" class="form-control" placeholder="New Password" />
+                              <div class="alert alert-danger" *ngIf="newPwd.touched && newPwd.invalid">
+                                <div *ngIf="newPwd.errors.required">New Password is required.</div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="sr-only"> Confirm Password</label>
+                              <input formControlName="confirmPassword" id="confirmPassword" type="password"
+                                [(ngModel)]="confirmPassword" placeholder="Confirm Password" class="form-control" />
+                              <div class="text-danger" *ngIf="newPassword != confirmPassword">
+                                Passsword is not matching
+                              </div>
+                              <div class="alert alert-danger" *ngIf="confirmPwd.touched && confirmPwd.invalid">
+                                <div *ngIf="confirmPwd.errors.required">Confirm Password is required.</div>
+                              </div>
+                              <div class="alert alert-danger"
+                                *ngIf="confirmPwd.valid && confirmPwd.invalid && confirmPwd.errors.pwdsDontMatch">
+                                Passwords do not match.
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="billing-back-btn">
+                        <div class="billing-back">
+                          <a href="#"><i class="fa fa-arrow-up"></i> back</a>
+                        </div>
+                        <div class="billing-btn">
+                          <button [disabled]="
+                                                password == undefined ||
+                                                password == '' ||
+                                                newPassword == undefined ||
+                                                newPassword == '' ||
+                                                confirmPassword == undefined ||
+                                                confirmPassword == ''
+                                              " class="btn btn-primary" (click)="changetoNewPassword({
+                                                password: password
+                                              })">Change PasswordContinue</button>
+                        </div>
+                      </div>
+                      <div class="billing-back-btn">
+
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+            </div>
+            <div class="panel panel-default single-my-account">
+              <div class="panel-heading my-account-title">
+                <h3 class="panel-title"><span>3 .</span> <a data-toggle="collapse" data-parent="#faq"
+                    href="#my-account-3">Modify your address book entries </a></h3>
+              </div>
+              <div id="my-account-3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="myaccount-info-wrapper">
+                    <div class="account-info-wrapper">
+                      <h4>Address Book Entries</h4>
+                    </div>
+                    <div class="entries-wrapper">
+                      <div class="row">
+                        <!-- <div class="best-sell-slider owl-carousel owl-nav-style-3">
+
+                        </div> -->
+                        <div class="col-lg-12 col-md-12 d-flex align-items-center justify-content-center" >
+                          <div class="row " *ngFor="let address of address">
+                                  <p class="col-lg-12 col-md-12 text-center ">{{address.addressType}}</p>
+                                  <p class="col-lg-12 col-md-12 text-center ">{{address.address}}</p>
+                                  <p class="col-lg-12 col-md-12 text-center ">{{address.state}}</p>
+                                  <p class="col-lg-12 col-md-12 text-center ">{{address.country}}</p>
+                                  <p class="col-lg-12 col-md-12 text-center ">{{address.zipCode}}</p>
+
+                                  <div class="entries-edit-delete text-center col-lg-12 col-md-12  ">
+                                    <button class="edit btn btn-primary btn-sm"  data-toggle="modal" data-target="#exampleModalLong"
+                                      (click)="editAddress(address.customerId)">Edit</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <!-- Button trigger modal -->
+                                    <button class="edit btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLong">Add</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                                      aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Add New Address</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <form [formGroup]="addAddress">
+                                              <div class="form-group">
+                                                <!-- <label for="customerEmail">User Email</label> -->
+                                                <div class="form-group">
+                                                  <input type="text" formControlName="addressType"
+                                                    placeholder="User addressType" class="form-control" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                  <input type="text" formControlName="address"
+                                                    placeholder="User address" class="form-control" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                  <input type="text" formControlName="state" placeholder="User state"
+                                                    class="form-control" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                  <input type="text" formControlName="country"
+                                                    placeholder="User country" class="form-control" />
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                  <input type="text" formControlName="zipCode"
+                                                    placeholder="User zipCode" class="form-control" />
+
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                              data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" (click)="AddressSubmit()">Save
+                                              changes</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default single-my-account">
+                      <div class="panel-heading my-account-title">
+                        <h3 class="panel-title"><span>4 .</span> <a href="wishlist.html">Modify your wish list </a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- account area end -->

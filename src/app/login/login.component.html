@@ -1,0 +1,138 @@
+<app-menu-section></app-menu-section>
+<div id="main">
+    <!-- login area start -->
+    <div class="login-register-area mb-60px mt-53px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                    <div class="login-register-wrapper">
+                        <div class="login-register-tab-list nav">
+                            <a class="active" data-toggle="tab" href="#lg1">
+                                <h4 >login</h4>
+                            </a>
+                            <a data-toggle="tab" href="#lg2">
+                                <h4>register</h4>
+                            </a>
+                        </div>
+                        <div class="tab-content">
+                            <div id="lg1" class="tab-pane active">
+                                <div class="login-form-container">
+                                    <div class="login-register-form">
+
+  <div class="card-body" >
+
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()"  >
+        <div class="form-group">
+            <!-- <label for="customerEmail">User Email</label> -->
+            <input type="text" formControlName="customerEmail" placeholder="User Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerEmail.errors }" />
+            <div *ngIf="submitted && f.customerEmail.errors" class="invalid-feedback">
+                <div *ngIf="f.customerEmail.errors.required">customerEmail is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <!-- <label for="password">Password</label> -->
+            <input type="password" formControlName="password" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="login-toggle-btn">
+            <input type="checkbox" />
+            <a class="flote-none" >Remember me</a>
+            <a routerLink="/forgetPassword" routerLinkActive="active" class="forgetpassword">Forgot Password?</a>
+        </div>
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+            </button>
+            <!-- <button type="button" class="btn btn-primary" (click)="ChangePassword()">Change Password</button> -->
+        </div>
+    </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                            <div id="lg2" class="tab-pane">
+                                <div class="login-form-container">
+                                    <div class="login-register-form">
+                                      <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+                                        <div class="form-group">
+
+                                          <input type="hidden" formControlName="createdBy" class="form-control" />
+                                      </div>
+                                        <div class="form-group">
+                                            <label class="sr-only"  for="customerFirstName"> First Name </label>
+                                            <input type="text" formControlName="customerFirstName" placeholder="First Name *"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerFirstName.errors }" />
+                                            <div *ngIf="submitted && f.customerFirstName.errors" class="invalid-feedback">
+                                              <div *ngIf="f.customerFirstName.errors.required"> First Name is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="customerLastName"> Last Name </label>
+                                            <input type="text" formControlName="customerLastName" placeholder="Last Name *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerLastName.errors }" />
+                                            <div *ngIf="submitted && f.customerLastName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.customerLastName.errors.required"> Last Name is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <label class="sr-only" for="customerMobileNo"> Mobile No</label>
+                                          <input type="text" formControlName="customerMobileNo" placeholder="Mobile No is required *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerMobileNo.errors }" />
+                                          <div *ngIf="submitted && f.customerMobileNo.errors" class="invalid-feedback">
+                                            <div *ngIf="f.customerMobileNo.errors.required"> Mobile No is required</div>
+                                          </div>
+                                      </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="customerEmail"> Email is required </label>
+                                            <input type="email" formControlName="customerEmail" placeholder="Email is required *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerEmail.errors }" />
+                                            <div *ngIf="submitted && f.customerEmail.errors" class="invalid-feedback">
+                                                <div *ngIf="f.customerEmail.errors.required"> Email is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <label class="sr-only" for="customerAlternateEmail"> Alternative Email is required</label>
+                                          <input type="email" formControlName="customerAlternateEmail" placeholder="Alternative Email is required " class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerAlternateEmail.errors }" />
+                                          <div *ngIf="submitted && f.customerAlternateEmail.errors" class="invalid-feedback">
+                                              <div *ngIf="f.customerAlternateEmail.errors.required">Alternative email is required</div>
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <label  class="sr-only" for="customerAlternateMobileNo">Alternate Mobile No</label>
+                                          <input type="text" formControlName="customerAlternateMobileNo" placeholder="Alternate Mobile No " class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerAlternateMobileNo.errors }" />
+                                          <div *ngIf="submitted && f.customerAlternateMobileNo.errors" class="invalid-feedback">
+                                              <div *ngIf="f.customerAlternateMobileNo.errors.required"> Alternate Mobile No is required</div>
+                                          </div>
+                                      </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="customerNotes">customer Notes</label>
+                                            <input type="customerNotes" formControlName="customerNotes" placeholder="customer Notes" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerNotes.errors }" />
+                                            <div *ngIf="submitted && f.customerNotes.errors" class="invalid-feedback">
+                                                <div *ngIf="f.customerNotes.errors.required">customer Notes is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button [disabled]="loading" class="btn btn-primary">
+                                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                Register
+                                            </button>
+
+                                        </div>
+                                      </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- login area end -->
+    <!-- Footer Area start -->
+    <app-footer></app-footer>
+    <!--  Footer Area End -->
+</div>
+

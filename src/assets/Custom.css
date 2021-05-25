@@ -1,0 +1,14 @@
+.home-furniture .home-10 .header-buttom-nav {
+    background: #ef1e1e Im !important;
+}
+.carousel-control.left{
+    background-image: none !important;
+}
+.carousel-control.right{
+    background-image: none !important;
+}
+.carousel-caption {
+    left: 8% !important;
+    padding-bottom: 96px !important;
+    color: black !important;
+}

@@ -1,0 +1,24 @@
+<!-- Banner Area Start -->
+<div class="banner-3-area mt-0px mb-100px" *ngIf="loadbannertype2 | async as objbanner2">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        *ngFor="let obj of objbanner2"
+      >
+        <div class="banner-wrapper banner-box">
+          <a href="shop-4-column.html"
+            ><img [src]="Urlform(obj.imageUrl)" alt=""
+          /></a>
+          <div class="banner_info col-sm-6">
+               <strong>{{obj.metaTitle}}</strong>
+               <h4>{{obj.metaDescription}}</h4>
+               <a href="shop-4-column.html"> Shop Now <i class="ion-android-arrow-dropright-circle"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Banner Area End -->
